@@ -15,9 +15,10 @@ defmodule Pogo.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Pogo.PubSub},
       # Start the Endpoint (http/https)
-      PogoWeb.Endpoint
+      PogoWeb.Endpoint,
       # Start a worker by calling: Pogo.Worker.start_link(arg)
       # {Pogo.Worker, arg}
+      Pogo.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
