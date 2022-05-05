@@ -27,12 +27,11 @@ defmodule Pogo.Forecasts do
     body = fetch_forecast_data()
     {:ok, res} = Jason.decode(body)
     %{"name" => city, "main" => %{"temp" => temperature}, "weather" => [%{"description" => description, "icon" => icon}]} = res
-    forecast = %Forecast{city: city, temperature: Kernel.round(temperature), description: description, icon: icon}
-    Repo.insert(forecast)
+    create_forecast(%{city: city, temperature: Kernel.round(temperature), description: description, icon: icon})
   end
 
-  def list_forecast do
-    raise "TODO"
+  def list_forecasts do
+    Repo.all(Forecast)
   end
 
   @doc """
@@ -61,7 +60,8 @@ defmodule Pogo.Forecasts do
 
   """
   def create_forecast(attrs \\ %{}) do
-    raise "TODO"
+    changeset = Forecast.changeset(%Forecast{}, attrs)
+    Repo.insert(changeset)
   end
 
   @doc """

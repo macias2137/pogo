@@ -1,0 +1,11 @@
+ <h1>Weather</h1>
+    <%= for f <- @forecasts do %>
+            <div class="forecast__container">
+                <span><%= f.city %></span>
+                <span><%= f.temperature %> °C</span>
+                <div class="forecast__img-container">
+                    <img class="forecast__img" src="http://openweathermap.org/img/w/<%= f.icon %>.png" alt="weather" />
+                </div>
+                <span><%= f.inserted_at %></span>
+            </div>
+    <% end %>

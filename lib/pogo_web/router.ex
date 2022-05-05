@@ -17,7 +17,7 @@ defmodule PogoWeb.Router do
   scope "/", PogoWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", PogoLive, :index
   end
 
   # Other scopes may use custom stacks.

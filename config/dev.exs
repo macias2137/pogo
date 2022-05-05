@@ -22,6 +22,7 @@ config :pogo, PogoWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
+  reloadable_compilers: [:gettext, :phoenix, :elixir, :phoenix_sass],
   secret_key_base: "EVM/jIM1wmLNKBzf8GxICd5A2OH16PjO0WjTVioO2iccZBiMKOsCoyQduTSC6/mv",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
@@ -56,6 +57,7 @@ config :pogo, PogoWeb.Endpoint,
 config :pogo, PogoWeb.Endpoint,
   live_reload: [
     patterns: [
+      ~r"priv/sass/.*(sass|scss)$",
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/pogo_web/(live|views)/.*(ex)$",

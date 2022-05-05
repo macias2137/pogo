@@ -54,5 +54,5 @@ import_config "#{config_env()}.exs"
 
 config :pogo, Pogo.Scheduler,
   jobs: [
-    {"* */15 * * *", fn -> Pogo.Forecasts.process_forecast_data() end}
+    {"* * * * *", fn -> Pogo.Forecasts.process_forecast_data() end}
   ]
