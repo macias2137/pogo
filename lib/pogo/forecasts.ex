@@ -3,8 +3,8 @@ defmodule Pogo.Forecasts do
   The Forecasts context.
   """
 
-  @openweatherapp_endpoint "https://api.openweathermap.org/data/2.5/weather?lat=52.2319581&lon=21.0067249&units=metric&appid=2e24f241347640bd3657813b4bd795a6"
-  # "http://api.openweathermap.org/geo/1.0/direct?q=Warsaw&limit=1&lang=en&appid=2e24f241347640bd3657813b4bd795a6"
+  # @openweatherapp_endpoint "https://api.openweathermap.org/data/2.5/weather?lat=52.2319581&lon=21.0067249&units=metric&appid=2e24f241347640bd3657813b4bd795a6"
+  @openweathermap_endpoint "https://api.openweathermap.org/data/2.5/weather?lat=52.2319581&lon=21.0067249&units=metric&appid=#{Application.fetch_env!(:pogo, :api_key)}"
 
   import Ecto.Query, warn: false
   import HTTPoison, only: [get: 1]
@@ -13,7 +13,7 @@ defmodule Pogo.Forecasts do
   alias Pogo.Forecasts.Forecast
 
   def fetch_forecast_data do
-    case HTTPoison.get(@openweatherapp_endpoint) do
+    case HTTPoison.get(@openweathermap_endpoint) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         body
       {:ok, %HTTPoison.Response{status_code: 404}} ->

@@ -8,4 +8,7 @@
                 </div>
                 <span><%= f.inserted_at %></span>
             </div>
+            <%= for c <- @comments do %>
+            <span><%= c.comment_text %></span>
+            <% end %>
     <% end %>

@@ -11,8 +11,8 @@ defmodule Pogo.Comments.Comment do
   end
 
   @doc false
-  def changeset(comments, attrs) do
-    comments
+  def changeset(comment, attrs) do
+    comment
     |> cast(attrs, [:username, :comment_text, :forecast_id])
     |> validate_required([:user, :comment_text, :forecast_id])
   end
