@@ -3,7 +3,6 @@ defmodule Pogo.Forecasts do
   The Forecasts context.
   """
 
-  # @openweatherapp_endpoint "https://api.openweathermap.org/data/2.5/weather?lat=52.2319581&lon=21.0067249&units=metric&appid=2e24f241347640bd3657813b4bd795a6"
   @openweathermap_endpoint "https://api.openweathermap.org/data/2.5/weather?lat=52.2319581&lon=21.0067249&units=metric&appid=#{Application.fetch_env!(:pogo, :api_key)}"
 
   import Ecto.Query, warn: false
