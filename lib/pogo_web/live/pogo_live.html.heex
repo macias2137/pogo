@@ -1,27 +1,33 @@
 <h1>Weather</h1>
 <%= for f <- @forecasts do %>
-<div class="forecast__container" phx-click="toggle">
-  <span><%= f.city %></span>
-  <span><%= f.temperature %> °C</span>
-  <div class="forecast__img-container">
-    <img class="forecast__img" alt="weather"
-    src={"http://openweathermap.org/img/w/#{f.icon}.png"} />
+  <div class="forecast__container" phx-click="toggle">
+    <p><%= f.city %></p>
+    <p><%= f.temperature %> °C</p>
+    <div class="forecast__img-container">
+      <img class="forecast__img" alt="weather"
+      src={"http://openweathermap.org/img/w/#{f.icon}.png"} />
+    </div>
+    <p><%= f.inserted_at %></p>
   </div>
-  <span><%= f.inserted_at %></span>
-</div>
-<.form let={fm} for={@changeset} phx-submit="save">
-  <%= label fm, :username %>
-  <%= text_input fm, :username %>
-  <%= error_tag fm, :username %>
+  <.form let={fm} for={@changeset} phx-submit="save">
+    <%= label fm, :username, "Enter your username" %>
+    <%= text_input fm, :username %>
+    <%= error_tag fm, :username %>
 
-  <%= label fm, :comment_text %>
-  <%= text_input fm, :comment_text %>
-  <%= error_tag fm, :comment_text %>
+    <%= label fm, :comment_text, "Type in comment" %>
+    <%= text_input fm, :comment_text %>
+    <%= error_tag fm, :comment_text %>
 
-  <%= hidden_input fm, :forecast_id, value: f.id %>
+    <%= hidden_input fm, :forecast_id, value: f.id %>
 
-  <%= submit "Save" %>
-</.form>
-<%= for c <- @comments, c.forecast_id == f.id do %>
-<span><%= c.comment_text %></span>
-<% end %> <% end %>
+    <%= submit "Save" %>
+  </.form>
+  <div class="comment__section">
+    <%= for c <- @comments, c.forecast_id == f.id do %>
+      <div class="comment__container">
+        <p class="comment__username"><b><%= c.username %></b></p>
+        <p class="comment__text"><%= c.comment_text %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

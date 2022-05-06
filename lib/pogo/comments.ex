@@ -10,11 +10,5 @@ defmodule Pogo.Comments do
     %Comment{}
     |> Comment.changeset(params)
     |> Repo.insert
-    # |> broadcast(:comment_created)
   end
-
-  # defp broadcast({:error, _reason} = error, _event), do: error
-  # defp broadcast({:ok, comment}, event) do
-  #   Phoenix.PubSub.broadcast(Pogo.PubSub)
-  # end
 end
