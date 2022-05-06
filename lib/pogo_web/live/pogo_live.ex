@@ -6,6 +6,7 @@ defmodule PogoWeb.PogoLive do
   alias Pogo.Comments.Comment
 
   def mount(_params, _session, socket) do
+    if connected?(socket), do: Comments.subscribe()
     socket = assign(socket, :forecasts, Forecasts.list_forecasts())
     socket = assign(socket, :comments, Comments.list_comments())
     socket = assign(socket, %{changeset: Comment.changeset(%Comment{})})
@@ -20,4 +21,11 @@ defmodule PogoWeb.PogoLive do
       |> assign(:comments, Comments.list_comments())}
     end
   end
+
+  @impl true
+  def handle_info({:comment_created, comment}, socket) do
+    {:noreply, update(socket, :comments, fn comments -> [comment | comments] end)}
+    IO.inspect(:comments)
+  end
+
 end
