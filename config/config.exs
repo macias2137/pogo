@@ -5,10 +5,14 @@
 # is restricted to this project.
 
 # General application configuration
+
+
 import Config
 
 config :pogo,
   ecto_repos: [Pogo.Repo]
+
+config :pogo, api_key: ""
 
 # Configures the endpoint
 config :pogo, PogoWeb.Endpoint,
