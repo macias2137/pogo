@@ -42,7 +42,7 @@ jobs:  # basic units of work in a run
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
         environment:  # environment variables for database
           POSTGRES_USER: postgres
-          POSTGRES_DB: pogo_dev
+          POSTGRES_DB: pogo_test
           POSTGRES_PASSWORD: postgres
 
     working_directory: ~/projects/pogo  # directory where steps will run
