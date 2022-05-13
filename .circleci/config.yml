@@ -70,11 +70,11 @@ jobs:  # basic units of work in a run
       - save_cache: # don't forget to save a *build* cache, too
           key: v1-build-cache-{{ .Branch }}
           paths: "_build"
-
+      
       - run:  # special utility that stalls main process until DB is ready
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
+      - run: mix ecto.setup  # run all tests in project
       - run: mix test  # run all tests in project
 
       - store_test_results:  # upload junit test results for display in Test Summary
