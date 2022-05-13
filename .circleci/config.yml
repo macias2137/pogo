@@ -36,7 +36,7 @@ jobs:  # basic units of work in a run
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
         environment:  # environment variables for primary container
           MIX_ENV: test
-      - image: cimg/postgres:10.1  # database image
+      - image: cimg/postgres:14.2  # database image
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
