@@ -45,7 +45,7 @@ jobs:  # basic units of work in a run
           POSTGRES_DB: pogo_test
           POSTGRES_PASSWORD: postgres
 
-    working_directory: ~/projects/pogo  # directory where steps will run
+    working_directory: ~/Desktop/projects/pogo  # directory where steps will run
 
     steps:  # commands that comprise the `build` job
       - checkout  # check out source code to working directory
