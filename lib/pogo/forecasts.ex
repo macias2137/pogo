@@ -29,6 +29,10 @@ defmodule Pogo.Forecasts do
     create_forecast(%{city: city, temperature: Kernel.round(temperature), description: description, icon: icon})
   end
 
+  def get_forecast!(id) do
+    Repo.get(Forecast, id)
+  end
+
   def list_forecasts do
     Repo.all(Forecast)
   end
