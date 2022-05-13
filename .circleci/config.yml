@@ -43,7 +43,7 @@ jobs:  # basic units of work in a run
         environment:  # environment variables for database
           POSTGRES_USER: postgres
           POSTGRES_DB: pogo_test
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
 
     working_directory: ~/Desktop/projects/pogo  # directory where steps will run
 
