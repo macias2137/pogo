@@ -32,4 +32,9 @@ defmodule Pogo.Forecasts do
   def list_forecasts do
     Repo.all(Forecast)
   end
+
+  def create_forecast(attrs \\ %{}) do
+    changeset = Forecast.changeset(%Forecast{}, attrs)
+    Repo.insert(changeset)
+  end
 end
