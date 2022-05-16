@@ -7,7 +7,8 @@ defmodule PogoWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_pogo_key",
-    signing_salt: "9AE5XrXh"
+    signing_salt: "9AE5XrXh",
+    timeout: 45_000
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]

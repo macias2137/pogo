@@ -22,7 +22,6 @@ defmodule Pogo.ForecastsTest do
 
     test "create_forecast/1 with valid data creates a forecast" do
       valid_attrs = %{city: "Koszalin", description: "windy", temperature: 22, icon: "01a"}
-
       assert {:ok, %Forecast{} = forecast} = Forecasts.create_forecast(valid_attrs)
     end
 
